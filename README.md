@@ -30,6 +30,7 @@
 git clone https://github.com/Prof445/auto-deauth.git
 cd auto-deauth
 ```
+---
 
 ▶️ Usage
 
@@ -37,12 +38,18 @@ cd auto-deauth
 sudo python3 deauth.py
 ```
 
+---
+
+⚠️ Press Ctrl + C to stop the attack and restore your Wi-Fi adapter to normal mode
+
+---
 
 🛡️ Disclaimer
 
 This tool is intended strictly for educational and authorized security testing purposes only.
 Do not use this on any network you do not own or have explicit permission to test.
 
+---
 
 🧠 Author
 
