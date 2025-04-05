@@ -1,9 +1,8 @@
-# ⚔️ Wi-Fi Deauth Attack Automation Tool
+# 🔥 Wi-Fi Deauth Attack Automation Tool
 
-> **We Are Resistance**
-> ![Mask](assets/money-heist-banner.png)
 
-> Automated wireless deauthentication attack tool.
+> <img src="assets/money-heist-banner.png" alt="Mask" width="200"/>
+**Automated wireless deauthentication attack tool**
 
 ---
 
@@ -12,8 +11,8 @@
 - 📶 Scans and lists all nearby Wi-Fi networks
 - 🎯 Select target from menu to launch deauth attack
 - ⏱️ Countdown while scan is running
-- 🧼 Auto-restores the Wi-Fi adapter to managed mode after stopping
-- 🧠 Auto-detection logic — uses your selected interface (auto lists  wi-fi adapter)
+- 🧠 Auto-detection logic — auto list Wi-Fi adapter
+- ✅ Auto-restores the Wi-Fi adapter to managed mode after stopping
 
 ---
 
@@ -38,10 +37,13 @@ cd auto-deauth
 sudo python3 deauth.py
 ```
 
+
 🛡️ Disclaimer
+
 This tool is intended strictly for educational and authorized security testing purposes only.
 Do not use this on any network you do not own or have explicit permission to test.
 
+
 🧠 Author
+
 Made with ❤️ by Professor
-GitHub: [@Prof445]
