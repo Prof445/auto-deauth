@@ -1,7 +1,7 @@
 # ⚔️ Wi-Fi Deauth Attack Automation Tool
 
 > **We Are Resistance**
-> ![Mask](assets/money-heist-banner.jpg)
+> ![Mask](assets/money-heist-banner.png)
 
 > Automated wireless deauthentication attack tool.
 
