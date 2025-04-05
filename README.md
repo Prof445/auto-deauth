@@ -27,7 +27,7 @@
 ## 📦 Installation
 
 ```bash
-git clone https://github.com/Prof445/auto-deauth
+git clone https://github.com/Prof445/auto-deauth.git
 cd auto-deauth
 ```
 
