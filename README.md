@@ -38,6 +38,10 @@ cd auto-deauth
 sudo python3 deauth.py
 ```
 
+## 🎥 Demo
+
+[![Watch the demo](assets/demo-thumbnail.png)](https://vimeo.com/1072874402?share=copy#t=0)
+
 ---
 
 ⚠️ Press Ctrl + C to stop the attack and restore your Wi-Fi adapter to normal mode
