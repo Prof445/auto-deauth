@@ -55,6 +55,6 @@ Do not use this on any network you do not own or have explicit permission to tes
 
 ---
 
-🧠 Author
+📌 Author
 
 Made with ❤️ by Professor
