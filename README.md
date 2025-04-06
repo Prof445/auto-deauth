@@ -40,7 +40,7 @@ sudo python3 deauth.py
 
 ## 🎥 Demo
 
-[![Watch the demo](assets/demo-thumbnail.png)](https://vimeo.com/1072874402?share=copy#t=0)
+[![Watch the demo](assets/demo-thumbnail.jpg)](https://vimeo.com/1072874402?share=copy#t=0)
 
 ---
 
