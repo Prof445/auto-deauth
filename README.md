@@ -2,7 +2,9 @@
 
 
 > <img src="assets/money-heist-banner.png" alt="Mask" width="200"/>
-**Automated Wi-Fi deauthentication attack tool**
+📡 Wi-Fi Deauth Tool
+
+This Python-based tool automates Wi-Fi deauthentication attacks by scanning for nearby networks and continuously disconnecting all connected clients from a selected target access point. Ideal for testing network robustness and monitoring unauthorized device resilience.
 
 ---
 
