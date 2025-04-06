@@ -2,7 +2,7 @@
 
 
 > <img src="assets/money-heist-banner.png" alt="Mask" width="200"/>
-**Automated wireless deauthentication attack tool**
+**Automated Wi-Fi deauthentication attack tool**
 
 ---
 
