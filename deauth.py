@@ -180,7 +180,7 @@ def scan_networks(monitor_iface, duration=40):
             pass
     
     try:
-        p = subprocess.Popen(["airodump-ng", "--write", "/tmp/scan", "--output-format", "csv", monitor_iface],
+        p = subprocess.Popen(["airodump-ng", "--write", "/tmp/scan", "--output-format", "csv", "--band", "abg", monitor_iface],
                             stdout=subprocess.DEVNULL,
                             stderr=subprocess.DEVNULL)
         
