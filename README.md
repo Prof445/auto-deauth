@@ -11,6 +11,7 @@ This Python-based tool automates Wi-Fi deauthentication attacks by scanning for 
 ## 🚀 Features
 
 - 📶 Scans and lists all nearby Wi-Fi networks
+- ✅ Supports both **2.4GHz** and **5GHz** Wi-Fi networks (depending on your adapter)
 - 🎯 Select target from menu to launch deauth attack
 - ⏱️ Countdown while scan is running
 - 🧠 Auto-detection logic — auto list Wi-Fi adapter
